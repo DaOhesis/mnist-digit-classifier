@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNIST Digit Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>✍️ MNIST Digit Classifier</h1>
+        <p class="subtitle">Draw a digit (0-9) and let the AI predict it!</p>
+
+        <div class="main-content">
+            <div class="canvas-container">
+                <canvas id="drawingCanvas" width="280" height="280"></canvas>
+                <div class="canvas-controls">
+                    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                    <button id="predictBtn" class="btn btn-primary">Predict</button>
+                </div>
+            </div>
+
+            <div class="results-container">
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing...</p>
+                </div>
+
+                <div id="results" class="results hidden">
+                    <div class="prediction-display">
+                        <div class="prediction-label">Predicted Digit:</div>
+                        <div id="prediction" class="prediction-value">-</div>
+                        <div id="confidence" class="confidence">Confidence: -</div>
+                    </div>
+
+                    <div class="top-predictions">
+                        <h3>Top 3 Predictions</h3>
+                        <div id="topPredictions" class="top-predictions-list"></div>
+                    </div>
+                </div>
+
+                <div id="error" class="error hidden"></div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ol>
+                <li>Draw a single digit (0-9) in the canvas</li>
+                <li>Click "Predict" to analyze your drawing</li>
+                <li>See the AI's prediction and confidence</li>
+                <li>Click "Clear" to try again</li>
+            </ol>
+            <p class="tip">💡 Tip: Draw large, clear digits for best results!</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
